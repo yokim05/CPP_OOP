@@ -28,24 +28,63 @@ public:
         cout << "Silahkan Pilih Menu di atas : ";
     }
 
-    int luas_persegi(int luas, int panjang, int lebar)
+    double luas_persegi(double panjang, double lebar)
     {
-        TugasSatu::x = luas;
         TugasSatu::y = panjang;
         TugasSatu::z = lebar;
-        int hasil;
+        double hasil;
 
-        hasil = TugasSatu::x * TugasSatu::y * TugasSatu::z;
+        hasil = TugasSatu::y * TugasSatu::z;
         return hasil;
     }
 
-    double luas_segitiga(int alas, int tinggi)
+    double luas_segitiga(double alas, double tinggi)
     {
         TugasSatu::x = alas;
         TugasSatu::y = tinggi;
         double hasil;
 
-        hasil = 0.5 * alas * tinggi;
+        hasil = 0.5 * TugasSatu::x * TugasSatu::y;
+        return hasil;
+    }
+
+    double volume_balok(double panjang, double lebar, double tinggi)
+    {
+        TugasSatu::x = panjang;
+        TugasSatu::y = lebar;
+        TugasSatu::z = tinggi;
+        double hasil;
+
+        hasil = TugasSatu::x * TugasSatu::y * TugasSatu::z;
+        return hasil;
+    }
+
+    double luas_lingkaran(double jarijari)
+    {
+        TugasSatu::x = jarijari;
+        double hasil;
+
+        hasil = TugasSatu::phi * TugasSatu::x * TugasSatu::x;
+        return hasil;
+    }
+
+    double keliling_lingkaran(double diameter)
+    {
+        TugasSatu::x = diameter;
+        double hasil;
+
+        hasil = TugasSatu::phi * TugasSatu::x;
+        return hasil;
+    }
+
+    double luas_prisma_tegaksegitiga(double luas_alas, double keliling_alas, double tinggi_prisma)
+    {
+        TugasSatu::x = luas_alas;
+        TugasSatu::y = keliling_alas;
+        TugasSatu::z = tinggi_prisma;
+        double hasil;
+
+        hasil = (2 * TugasSatu::x) + (TugasSatu::y * TugasSatu::z);
         return hasil;
     }
 };
@@ -54,7 +93,8 @@ int main(int argc, char const *argv[])
 {
 
     TugasSatu tugassatu;
-    int pilihan, x, y, z;
+    int pilihan;
+    double x, y, z;
     char lanjut;
 
     while (true)
@@ -70,9 +110,7 @@ int main(int argc, char const *argv[])
             cin >> x;
             cout << "Masukan Nilan Lebar: ";
             cin >> y;
-            cout << "Masukan Nilai Tinggi: ";
-            cin >> z;
-            cout << "Luas Persegi panjangnya adalah :" << tugassatu.luas_persegi(x, y, z) << endl;
+            cout << "Luas Persegi panjangnya adalah :" << tugassatu.luas_persegi(x, y) << endl;
             break;
         case 2:
             cout << "Masukan Nilan Alas: ";
@@ -80,9 +118,37 @@ int main(int argc, char const *argv[])
             cout << "Masukan Nilan Tinggi: ";
             cin >> y;
             cout << "Luas Segitiganya adalah :" << tugassatu.luas_segitiga(x, y) << endl;
-
+            break;
+        case 3:
+            cout << "masukan Nilai Panjang: ";
+            cin >> x;
+            cout << "masukan Nilai Lebar: ";
+            cin >> y;
+            cout << "masukan Nilai Tinggi: ";
+            cin >> z;
+            cout << "Volume Baloknya adalah :" << tugassatu.volume_balok(x, y, z) << endl;
+            break;
+        case 4:
+            cout << "masukan Nilai Jari - Jari";
+            cin >> x;
+            cout << "Luas lingkarannya adalah :" << tugassatu.luas_lingkaran(x) << endl;
+            break;
+        case 5:
+            cout << "Masukan Nilai diameternya: ";
+            cin >> x;
+            cout << "Keliling lingkaranya adalah :" << tugassatu.keliling_lingkaran(x) << endl;
+            break;
+        case 6:
+            cout << "Masukan Nilai Luas alasnya: ";
+            cin >> x;
+            cout << "Masukan Nilai keliling alasnya: ";
+            cin >> y;
+            cout << "Masukan Nilai tinggi prisma: ";
+            cin >> z;
+            cout << "Luas prisma tegak segitiganya adalah :  :" << tugassatu.luas_prisma_tegaksegitiga(x, y, z) << endl;
             break;
         default:
+            cout << "Menu yang dimaksud tidak ada !!";
             break;
         }
 
